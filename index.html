@@ -30,562 +30,240 @@
   --radius-lg: 16px;
   --shadow: 0 1px 3px rgba(0,0,0,0.08);
 }
-
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-
-body {
-  font-family: 'Noto Sans JP', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  font-size: 14px;
-  line-height: 1.6;
-  min-height: 100svh;
-}
-
-.app-header {
-  background: var(--accent);
-  color: #fff;
-  padding: 16px 20px 14px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.app-header h1 { font-size: 16px; font-weight: 700; letter-spacing: 0.04em; }
-.app-header .sub { font-size: 11px; opacity: 0.7; margin-top: 1px; }
-
-.reset-btn {
-  background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.3);
-  color: #fff;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 12px;
-  cursor: pointer;
-  font-family: inherit;
-}
-
+body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.6; min-height: 100svh; }
+.app-header { background: var(--accent); color: #fff; padding: 16px 20px 14px; position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; }
+.reset-btn { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 6px 12px; border-radius: 20px; font-size: 12px; cursor: pointer; font-family: inherit; }
 .main { padding: 16px; max-width: 640px; margin: 0 auto; }
-
-.section {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 14px 16px;
-  margin-bottom: 12px;
-  box-shadow: var(--shadow);
-}
-
-.section-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-.section-num {
-  width: 22px; height: 22px;
-  background: var(--accent);
-  color: #fff;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 11px; font-weight: 700; flex-shrink: 0;
-}
+.section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 14px 16px; margin-bottom: 12px; box-shadow: var(--shadow); }
+.section-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.section-num { width: 22px; height: 22px; background: var(--accent); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
 .section-title { font-size: 13px; font-weight: 700; color: var(--text); }
-
 .field { margin-bottom: 10px; }
 .field:last-child { margin-bottom: 0; }
-.field label {
-  display: block;
-  font-size: 11px;
-  color: var(--text2);
-  margin-bottom: 4px;
-  font-weight: 500;
-}
-
-input[type="number"], select {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--surface2);
-  color: var(--text);
-  font-family: inherit;
-  font-size: 15px;
-  appearance: none;
-  -webkit-appearance: none;
-  outline: none;
-  transition: border-color 0.15s;
-}
-input[type="number"]:focus, select:focus {
-  border-color: var(--accent);
-  background: #fff;
-}
-select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b6660' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 12px center;
-  padding-right: 32px;
-}
-
+.field label { display: block; font-size: 11px; color: var(--text2); margin-bottom: 4px; font-weight: 500; }
+input[type="number"], select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface2); color: var(--text); font-family: inherit; font-size: 15px; appearance: none; -webkit-appearance: none; outline: none; transition: border-color 0.15s; }
+input[type="number"]:focus, select:focus { border-color: var(--accent); background: #fff; }
+select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b6660' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; }
 .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
-
-.koshi-item {
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 10px 12px;
-  margin-bottom: 8px;
-  position: relative;
-}
-.koshi-item-title {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--accent);
-  margin-bottom: 8px;
-}
-.del-btn {
-  position: absolute;
-  top: 8px; right: 10px;
-  background: transparent;
-  border: none;
-  color: var(--text3);
-  font-size: 18px;
-  cursor: pointer;
-  line-height: 1;
-  padding: 2px;
-  font-family: inherit;
-}
-
-.add-btn {
-  width: 100%;
-  padding: 10px;
-  background: transparent;
-  border: 1.5px dashed var(--border2);
-  border-radius: var(--radius);
-  color: var(--text2);
-  font-size: 13px;
-  cursor: pointer;
-  font-family: inherit;
-  margin-top: 4px;
-  transition: all 0.15s;
-}
-.add-btn:active { background: var(--surface2); }
-
-.calc-btn {
-  width: 100%;
-  padding: 15px;
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  border-radius: var(--radius-lg);
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  font-family: inherit;
-  letter-spacing: 0.05em;
-  margin-bottom: 20px;
-  transition: opacity 0.15s;
-}
-.calc-btn:active { opacity: 0.85; }
-
+.koshi-item { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 12px; margin-bottom: 8px; position: relative; }
+.koshi-item-title { font-size: 11px; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+.del-btn { position: absolute; top: 8px; right: 10px; background: transparent; border: none; color: var(--text3); font-size: 18px; cursor: pointer; line-height: 1; padding: 2px; font-family: inherit; }
+.add-btn { width: 100%; padding: 10px; background: transparent; border: 1.5px dashed var(--border2); border-radius: var(--radius); color: var(--text2); font-size: 13px; cursor: pointer; font-family: inherit; margin-top: 4px; }
+.calc-btn { width: 100%; padding: 15px; background: var(--accent); color: #fff; border: none; border-radius: var(--radius-lg); font-size: 16px; font-weight: 700; cursor: pointer; font-family: inherit; letter-spacing: 0.05em; margin-bottom: 20px; }
 .results { display: none; }
-
-.res-section {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 14px 16px;
-  margin-bottom: 12px;
-  box-shadow: var(--shadow);
-}
-.res-title {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--text2);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-
-.metrics {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin-bottom: 0;
-}
-.metric {
-  background: var(--surface2);
-  border-radius: var(--radius);
-  padding: 10px 12px;
-}
+.res-section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 14px 16px; margin-bottom: 12px; box-shadow: var(--shadow); }
+.res-title { font-size: 12px; font-weight: 700; color: var(--text2); letter-spacing: 0.06em; margin-bottom: 10px; }
+.metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.metric { background: var(--surface2); border-radius: var(--radius); padding: 10px 12px; }
 .metric-label { font-size: 11px; color: var(--text2); margin-bottom: 3px; }
 .metric-value { font-size: 22px; font-weight: 700; color: var(--text); font-family: 'DM Mono', monospace; }
 .metric-unit { font-size: 12px; color: var(--text2); font-weight: 400; margin-left: 2px; font-family: 'Noto Sans JP', sans-serif; }
 .metric.accent { background: var(--accent-light); }
 .metric.accent .metric-value { color: var(--accent); }
-
-.order-block {
-  background: #1a1814;
-  border-radius: var(--radius);
-  padding: 14px;
-  margin-top: 10px;
-  overflow-x: auto;
-}
-.order-text {
-  font-family: 'DM Mono', monospace;
-  font-size: 12px;
-  color: #c8c4be;
-  line-height: 1.9;
-  white-space: pre;
-}
-
-.copy-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 8px;
-}
-.copy-btn {
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  border-radius: 20px;
-  padding: 6px 16px;
-  font-size: 12px;
-  cursor: pointer;
-  font-family: inherit;
-  font-weight: 500;
-}
-
+.order-block { background: #1a1814; border-radius: var(--radius); padding: 14px; margin-top: 10px; overflow-x: auto; }
+.order-text { font-family: 'DM Mono', monospace; font-size: 12px; color: #c8c4be; line-height: 1.9; white-space: pre; }
+.copy-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.copy-btn { background: var(--accent); color: #fff; border: none; border-radius: 20px; padding: 6px 16px; font-size: 12px; cursor: pointer; font-family: inherit; font-weight: 500; }
 .err { color: var(--danger); font-size: 12px; margin-top: 8px; display: none; }
-
-.hint {
-  font-size: 11px;
-  color: var(--text3);
-  margin-top: 4px;
-}
-
-.divider { height: 1px; background: var(--border); margin: 10px 0; }
-
-@media (max-width: 380px) {
-  .grid3 { grid-template-columns: 1fr 1fr; }
-  .metrics { grid-template-columns: 1fr; }
-}
+.hint { font-size: 11px; color: var(--text3); margin-top: 4px; }
+.page-tabs { display: flex; gap: 6px; margin-bottom: 16px; }
+.page-tab { flex: 1; padding: 10px 8px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); font-size: 13px; font-weight: 700; color: var(--text2); cursor: pointer; font-family: inherit; text-align: center; }
+.page-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.page { display: none; }
+.page.active { display: block; }
+.help-btn { width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--border2); background: transparent; color: var(--text2); font-size: 12px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; font-family: inherit; flex-shrink: 0; }
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; align-items: center; justify-content: center; padding: 20px; }
+.modal-overlay.open { display: flex; }
+.modal { background: var(--surface); border-radius: var(--radius-lg); padding: 20px; max-width: 360px; width: 100%; max-height: 80svh; overflow-y: auto; }
+.modal-title { font-size: 14px; font-weight: 700; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; }
+.modal-close { background: transparent; border: none; font-size: 20px; cursor: pointer; color: var(--text2); font-family: inherit; line-height: 1; }
+.input-mode-toggle { display: flex; gap: 6px; margin-bottom: 12px; }
+.mode-btn { flex: 1; padding: 8px; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); font-size: 12px; font-weight: 700; color: var(--text2); cursor: pointer; font-family: inherit; text-align: center; }
+.mode-btn.active { background: var(--accent-light); border-color: var(--accent); color: var(--accent); }
+@media (max-width: 380px) { .grid3 { grid-template-columns: 1fr 1fr; } .metrics { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
-
 <header class="app-header">
   <div>
-    <div class="app-header h1" style="font-size:16px;font-weight:700;letter-spacing:0.04em">木材積算</div>
-    <div class="sub">軽量鉄骨・木軸 間仕切り壁</div>
+    <div style="font-size:16px;font-weight:700;letter-spacing:0.04em">木材積算</div>
+    <div style="font-size:11px;opacity:0.7;margin-top:1px">軽量鉄骨・木軸 間仕切り壁</div>
   </div>
   <button class="reset-btn" onclick="resetAll()">リセット</button>
 </header>
 
+<div id="help-modal" class="modal-overlay" onclick="if(event.target===this)closeHelp()">
+  <div class="modal">
+    <div class="modal-title">
+      <span>天井材の見方</span>
+      <button class="modal-close" onclick="closeHelp()">×</button>
+    </div>
+    <svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;margin-bottom:14px">
+      <rect width="320" height="220" fill="#f5f4f0" rx="8"/>
+      <rect x="30" y="30" width="260" height="160" fill="#e8f0eb" stroke="#2d5a3d" stroke-width="1.5" rx="2"/>
+      <line x1="95" y1="30" x2="95" y2="190" stroke="#8b4513" stroke-width="2.5"/>
+      <line x1="160" y1="30" x2="160" y2="190" stroke="#8b4513" stroke-width="2.5"/>
+      <line x1="225" y1="30" x2="225" y2="190" stroke="#8b4513" stroke-width="2.5"/>
+      <line x1="30" y1="80" x2="290" y2="80" stroke="#1a5276" stroke-width="3"/>
+      <line x1="30" y1="140" x2="290" y2="140" stroke="#1a5276" stroke-width="3"/>
+      <text x="160" y="18" text-anchor="middle" font-size="11" fill="#2d5a3d" font-weight="700">幅 (m)</text>
+      <text x="16" y="115" text-anchor="middle" font-size="11" fill="#2d5a3d" font-weight="700" transform="rotate(-90,16,115)">奥行き (m)</text>
+      <text x="126" y="60" text-anchor="middle" font-size="10" fill="#8b4513" font-weight="700">野縁</text>
+      <text x="200" y="100" text-anchor="middle" font-size="10" fill="#1a5276" font-weight="700">野縁受け</text>
+      <defs><marker id="a" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#2d5a3d"/></marker></defs>
+    </svg>
+    <div style="font-size:12px;color:#6b6660;line-height:1.8">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px"><div style="width:24px;height:3px;background:#8b4513;flex-shrink:0"></div><span><b>野縁</b>：天井を縦方向に走る細い角材</span></div>
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px"><div style="width:24px;height:4px;background:#1a5276;flex-shrink:0"></div><span><b>野縁受け</b>：野縁を受ける横方向の角材</span></div>
+      <div style="margin-bottom:6px"><b>野縁ピッチ</b>：野縁と野縁の間隔（通常303mm）</div>
+      <div><b>野縁受けピッチ</b>：野縁受けと野縁受けの間隔（通常900mm）</div>
+    </div>
+  </div>
+</div>
+
 <main class="main">
-
-  <div class="section">
-    <div class="section-header">
-      <div class="section-num">1</div>
-      <div class="section-title">基本設定</div>
-    </div>
-    <div class="grid2">
-      <div class="field">
-        <label>スラブ to スラブ</label>
-        <select id="slab">
-          <option value="2.7">2.7 m</option>
-          <option value="2.4">2.4 m</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>スタッド間隔 (m)</label>
-        <input type="number" id="pitch" value="0.3" min="0.1" max="1.0" step="0.05">
-      </div>
-    </div>
-    <div class="grid2" style="margin-top:10px">
-      <div class="field">
-        <label>ロス率 (%)</label>
-        <input type="number" id="loss" value="5" min="0" max="50" step="1">
-      </div>
-    </div>
+  <div class="page-tabs">
+    <button class="page-tab active" onclick="switchPage('kabe')">壁材積算</button>
+    <button class="page-tab" onclick="switchPage('tenjou')">天井積算</button>
   </div>
 
-  <div class="section">
-    <div class="section-header">
-      <div class="section-num">2</div>
-      <div class="section-title">外壁</div>
-    </div>
-    <div class="field">
-      <label>延長 (m)</label>
-      <input type="number" id="gaiheki-m" placeholder="例: 12.5" min="0" step="0.1">
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-header">
-      <div class="section-num">3</div>
-      <div class="section-title">界壁</div>
-    </div>
-    <div class="grid3">
-      <div class="field">
-        <label>延長 (m)</label>
-        <input type="number" id="kaiheki-m" placeholder="例: 8.0" min="0" step="0.1">
+  <div id="page-kabe" class="page active">
+    <div class="section">
+      <div class="section-header"><div class="section-num">1</div><div class="section-title">基本設定</div></div>
+      <div class="grid2">
+        <div class="field"><label>スラブ to スラブ</label><select id="slab"><option value="2.7">2.7 m</option><option value="2.4">2.4 m</option></select></div>
+        <div class="field"><label>スタッド間隔 (m)</label><input type="number" id="pitch" value="0.3" min="0.1" max="1.0" step="0.05"></div>
       </div>
-      <div class="field">
-        <label>入隅 (箇所)</label>
-        <input type="number" id="kaiheki-iri" value="0" min="0" step="1">
-      </div>
-      <div class="field">
-        <label>エンド (箇所)</label>
-        <input type="number" id="kaiheki-end" value="0" min="0" step="1">
+      <div class="grid2" style="margin-top:10px">
+        <div class="field"><label>ロス率 (%)</label><input type="number" id="loss" value="5" min="0" max="50" step="1"></div>
       </div>
     </div>
-  </div>
-
-  <div class="section">
-    <div class="section-header">
-      <div class="section-num">4</div>
-      <div class="section-title">腰壁</div>
+    <div class="section">
+      <div class="section-header"><div class="section-num">2</div><div class="section-title">外壁</div></div>
+      <div class="field"><label>延長 (m)</label><input type="number" id="gaiheki-m" placeholder="例: 12.5" min="0" step="0.1"></div>
     </div>
-    <div class="hint" style="margin-bottom:10px">高さ 1.5m 以上は横材 3本、未満は 2本で計算します</div>
-    <div id="koshi-list"></div>
-    <button class="add-btn" onclick="addKoshi()">＋ 腰壁を追加</button>
+    <div class="section">
+      <div class="section-header"><div class="section-num">3</div><div class="section-title">界壁</div></div>
+      <div class="grid3">
+        <div class="field"><label>延長 (m)</label><input type="number" id="kaiheki-m" placeholder="例: 8.0" min="0" step="0.1"></div>
+        <div class="field"><label>入隅 (箇所)</label><input type="number" id="kaiheki-iri" value="0" min="0" step="1"></div>
+        <div class="field"><label>エンド (箇所)</label><input type="number" id="kaiheki-end" value="0" min="0" step="1"></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-header"><div class="section-num">4</div><div class="section-title">腰壁</div></div>
+      <div class="hint" style="margin-bottom:10px">高さ 1.5m 以上は横材 3本、未満は 2本で計算します</div>
+      <div id="koshi-list"></div>
+      <button class="add-btn" onclick="addKoshi()">＋ 腰壁を追加</button>
+    </div>
+    <div id="form-err" class="err">※ 外壁・界壁・腰壁のいずれか1つ以上を入力してください</div>
+    <button class="calc-btn" onclick="calculate()">計 算 す る</button>
+    <div class="results" id="results"></div>
   </div>
 
-  <div id="form-err" class="err">※ 外壁・界壁・腰壁のいずれか1つ以上を入力してください</div>
-
-  <button class="calc-btn" onclick="calculate()">計 算 す る</button>
-
-  <div class="results" id="results"></div>
-
+  <div id="page-tenjou" class="page">
+    <div class="section">
+      <div class="section-header"><div class="section-num">1</div><div class="section-title">基本設定（天井）</div></div>
+      <div class="grid2">
+        <div class="field"><label>野縁ピッチ (m)</label><input type="number" id="noen-pitch" value="0.303" min="0.1" step="0.001"></div>
+        <div class="field"><label>野縁受けピッチ (m)</label><input type="number" id="noenuke-pitch" value="0.9" min="0.1" step="0.05"></div>
+      </div>
+      <div class="grid2" style="margin-top:10px">
+        <div class="field"><label>材料の長さ (m)</label><input type="number" id="t-length" value="2.7" min="0.5" step="0.1"></div>
+        <div class="field"><label>ロス率 (%)</label><input type="number" id="t-loss" value="5" min="0" max="50" step="1"></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-header"><div class="section-num">2</div><div class="section-title">部屋の入力</div><button class="help-btn" onclick="openHelp()">?</button></div>
+      <div class="input-mode-toggle">
+        <button class="mode-btn active" id="mode-heibei" onclick="switchMode('heibei')">平米数で入力</button>
+        <button class="mode-btn" id="mode-tateyoko" onclick="switchMode('tateyoko')">縦×横で入力</button>
+      </div>
+      <div id="mode-heibei-form">
+        <div class="hint" style="margin-bottom:8px">平米数入力の場合、部屋を正方形と仮定して計算します。縦×横入力の方がより正確です。</div>
+        <div class="field"><label>天井面積 (m²)</label><input type="number" id="heibei" placeholder="例: 15.0" min="0" step="0.1"></div>
+      </div>
+      <div id="mode-tateyoko-form" style="display:none">
+        <div class="grid2">
+          <div class="field"><label>部屋の幅 (m)</label><input type="number" id="heya-w" placeholder="例: 4.0" min="0" step="0.1"></div>
+          <div class="field"><label>部屋の奥行き (m)</label><input type="number" id="heya-d" placeholder="例: 3.5" min="0" step="0.1"></div>
+        </div>
+      </div>
+      <div id="t-form-err" class="err">※ 面積または縦横を入力してください</div>
+    </div>
+    <button class="calc-btn" onclick="calculateTenjou()">計 算 す る</button>
+    <div class="results" id="t-results"></div>
+  </div>
 </main>
 
 <script>
 let koshiId = 0;
-
-function addKoshi(m='', iri=0, end=0, h='') {
-  koshiId++;
-  const id = koshiId;
-  const div = document.createElement('div');
-  div.className = 'koshi-item';
-  div.id = 'koshi-' + id;
-  div.innerHTML = `
-    <div class="koshi-item-title">腰壁 ${document.querySelectorAll('.koshi-item').length + 1}</div>
-    <button class="del-btn" onclick="delKoshi(${id})">×</button>
-    <div class="grid2" style="margin-bottom:8px">
-      <div class="field">
-        <label>延長 (m)</label>
-        <input type="number" class="ki-m" placeholder="例: 5.0" min="0" step="0.1" value="${m}">
-      </div>
-      <div class="field">
-        <label>高さ (m)</label>
-        <input type="number" class="ki-h" placeholder="例: 1.2" min="0" step="0.05" value="${h}">
-      </div>
-    </div>
-    <div class="grid2">
-      <div class="field">
-        <label>入隅 (箇所)</label>
-        <input type="number" class="ki-iri" min="0" step="1" value="${iri}">
-      </div>
-      <div class="field">
-        <label>エンド (箇所)</label>
-        <input type="number" class="ki-end" min="0" step="1" value="${end}">
-      </div>
-    </div>
-  `;
-  document.getElementById('koshi-list').appendChild(div);
-  renumberKoshi();
+function addKoshi(m='',iri=0,end=0,h=''){koshiId++;const id=koshiId;const div=document.createElement('div');div.className='koshi-item';div.id='koshi-'+id;div.innerHTML=`<div class="koshi-item-title">腰壁 ${document.querySelectorAll('.koshi-item').length+1}</div><button class="del-btn" onclick="delKoshi(${id})">×</button><div class="grid2" style="margin-bottom:8px"><div class="field"><label>延長 (m)</label><input type="number" class="ki-m" placeholder="例: 5.0" min="0" step="0.1" value="${m}"></div><div class="field"><label>高さ (m)</label><input type="number" class="ki-h" placeholder="例: 1.2" min="0" step="0.05" value="${h}"></div></div><div class="grid2"><div class="field"><label>入隅 (箇所)</label><input type="number" class="ki-iri" min="0" step="1" value="${iri}"></div><div class="field"><label>エンド (箇所)</label><input type="number" class="ki-end" min="0" step="1" value="${end}"></div></div>`;document.getElementById('koshi-list').appendChild(div);renumberKoshi();}
+function delKoshi(id){const el=document.getElementById('koshi-'+id);if(el)el.remove();renumberKoshi();}
+function renumberKoshi(){document.querySelectorAll('.koshi-item-title').forEach((el,i)=>{el.textContent='腰壁 '+(i+1);});}
+function getNum(id,fallback=0){const el=document.getElementById(id);if(!el)return fallback;const v=parseFloat(el.value);return isNaN(v)?fallback:v;}
+function fmt(n){return n.toFixed(2);}
+function calculate(){
+  document.getElementById('form-err').style.display='none';
+  const slab=getNum('slab',2.7),pitch=getNum('pitch',0.3),loss=getNum('loss',5)/100;
+  const g_m=getNum('gaiheki-m',0),k_m=getNum('kaiheki-m',0),k_iri=getNum('kaiheki-iri',0),k_end=getNum('kaiheki-end',0);
+  const koshiList=[];
+  document.querySelectorAll('.koshi-item').forEach((row,i)=>{const m=parseFloat(row.querySelector('.ki-m').value)||0,h=parseFloat(row.querySelector('.ki-h').value)||0,iri=parseFloat(row.querySelector('.ki-iri').value)||0,end=parseFloat(row.querySelector('.ki-end').value)||0;if(m>0&&h>0)koshiList.push({m,h,iri,end,idx:i+1});});
+  if(g_m===0&&k_m===0&&koshiList.length===0){document.getElementById('form-err').style.display='block';return;}
+  const gaiheki_raw=(g_m/pitch)*slab+(g_m*3);
+  const kaiheki_raw=((k_m/pitch)+(k_iri*2+k_end))*slab+(k_m*3);
+  let koshi_total_raw=0;
+  const koshiCalc=koshiList.map(k=>{const yokon=k.h>=1.5?3:2;const raw=((k.m/pitch)+(k.iri*2+k.end))*k.h+(k.m*yokon);koshi_total_raw+=raw;return{...k,yokon,raw};});
+  const koshi_total_m=koshiList.reduce((a,k)=>a+k.m,0);
+  const sai_raw=g_m+(k_m*2)+(koshi_total_m*2);
+  function toHon(rawM,unitLen){return Math.ceil(rawM*(1+loss)/unitLen);}
+  const g_hon=toHon(gaiheki_raw,slab),k_hon=toHon(kaiheki_raw,slab);
+  const koshi_hons=koshiCalc.map(k=>toHon(k.raw,slab));
+  const koshi_total_hon=koshi_hons.reduce((a,v)=>a+v,0);
+  const sai_hon=toHon(sai_raw,slab),total_hon=g_hon+k_hon+koshi_total_hon+sai_hon;
+  const lines=[`【発注リスト】`,`S-S: ${slab}m  ピッチ: ${pitch}m  ロス: ${Math.round(loss*100)}%`,'─'.repeat(32)];
+  if(g_m>0)lines.push(`外壁スタッド  ${fmt(gaiheki_raw)}m → ${g_hon}本`);
+  if(k_m>0)lines.push(`界壁スタッド  ${fmt(kaiheki_raw)}m → ${k_hon}本`);
+  koshiCalc.forEach((k,i)=>lines.push(`腰壁${k.idx}(H${k.h}m/${k.yokon}本横) ${fmt(k.raw)}m → ${koshi_hons[i]}本`));
+  if(koshiCalc.length>1)lines.push(`腰壁 合計     ${fmt(koshi_total_raw)}m → ${koshi_total_hon}本`);
+  if(sai_raw>0)lines.push(`際根太        ${fmt(sai_raw)}m → ${sai_hon}本`);
+  lines.push('─'.repeat(32),`合 計         ${total_hon}本`);
+  const orderText=lines.join('\n');window._orderText=orderText;
+  function mp(l1,v1,u1,l2,v2,u2,ac=false){const c=ac?'metric accent':'metric';return`<div class="${c}"><div class="metric-label">${l1}</div><div class="metric-value">${v1}<span class="metric-unit">${u1}</span></div></div><div class="${c}"><div class="metric-label">${l2}</div><div class="metric-value">${v2}<span class="metric-unit">${u2}</span></div></div>`;}
+  function rc(t,inner){return`<div class="res-section"><div class="res-title">${t}</div><div class="metrics">${inner}</div></div>`;}
+  let html='';
+  if(g_m>0)html+=rc('外壁',mp('必要m数',fmt(gaiheki_raw),'m','必要本数（ロス込）',g_hon,'本',true));
+  if(k_m>0)html+=rc('界壁',mp('必要m数',fmt(kaiheki_raw),'m','必要本数（ロス込）',k_hon,'本',true));
+  if(koshiCalc.length>0){let ki='';koshiCalc.forEach((k,i)=>{ki+=mp(`腰壁${k.idx}｜H${k.h}m（横材${k.yokon}本）m数`,fmt(k.raw),'m',`腰壁${k.idx} 本数（ロス込）`,koshi_hons[i],'本',true);});if(koshiCalc.length>1)ki+=mp('腰壁 合計m数',fmt(koshi_total_raw),'m','腰壁 合計本数',koshi_total_hon,'本');html+=rc('腰壁',ki);}
+  if(sai_raw>0)html+=rc('際根太',mp('必要m数',fmt(sai_raw),'m','必要本数（ロス込）',sai_hon,'本',true));
+  html+=`<div class="res-section"><div class="copy-row"><div class="res-title" style="margin:0">発注リスト</div><button class="copy-btn" onclick="copyOrder()">コピー</button></div><div class="order-block"><div class="order-text">${orderText}</div></div></div><div class="res-section" style="text-align:center;padding:16px"><div class="metric-label" style="margin-bottom:6px">合計発注本数</div><div style="font-size:40px;font-weight:700;font-family:'DM Mono',monospace;color:var(--accent)">${total_hon}<span style="font-size:16px;color:var(--text2);font-weight:400;margin-left:4px">本</span></div></div>`;
+  const resEl=document.getElementById('results');resEl.innerHTML=html;resEl.style.display='block';resEl.scrollIntoView({behavior:'smooth',block:'start'});
 }
-
-function delKoshi(id) {
-  const el = document.getElementById('koshi-' + id);
-  if (el) el.remove();
-  renumberKoshi();
+function copyOrder(){if(!window._orderText)return;navigator.clipboard.writeText(window._orderText).then(()=>{const btn=document.querySelector('#results .copy-btn');btn.textContent='コピー完了 ✓';btn.style.background='#27ae60';setTimeout(()=>{btn.textContent='コピー';btn.style.background='';},2000);});}
+function resetAll(){if(!confirm('入力内容をすべてリセットしますか？'))return;document.getElementById('gaiheki-m').value='';document.getElementById('kaiheki-m').value='';document.getElementById('kaiheki-iri').value='0';document.getElementById('kaiheki-end').value='0';document.getElementById('koshi-list').innerHTML='';koshiId=0;addKoshi();document.getElementById('results').style.display='none';document.getElementById('results').innerHTML='';window.scrollTo({top:0,behavior:'smooth'});}
+function switchPage(page){document.querySelectorAll('.page-tab').forEach((t,i)=>{t.classList.toggle('active',(i===0&&page==='kabe')||(i===1&&page==='tenjou'));});document.getElementById('page-kabe').classList.toggle('active',page==='kabe');document.getElementById('page-tenjou').classList.toggle('active',page==='tenjou');}
+function switchMode(mode){document.getElementById('mode-heibei').classList.toggle('active',mode==='heibei');document.getElementById('mode-tateyoko').classList.toggle('active',mode==='tateyoko');document.getElementById('mode-heibei-form').style.display=mode==='heibei'?'block':'none';document.getElementById('mode-tateyoko-form').style.display=mode==='tateyoko'?'block':'none';}
+function openHelp(){document.getElementById('help-modal').classList.add('open');}
+function closeHelp(){document.getElementById('help-modal').classList.remove('open');}
+function calculateTenjou(){
+  document.getElementById('t-form-err').style.display='none';
+  const noenPitch=getNum('noen-pitch',0.303),noenukePitch=getNum('noenuke-pitch',0.9),loss=getNum('t-loss',5)/100,tLen=getNum('t-length',2.7);
+  const isTateYoko=document.getElementById('mode-tateyoko').classList.contains('active');
+  let width,depth,heibei;
+  if(isTateYoko){width=getNum('heya-w',0);depth=getNum('heya-d',0);if(width===0||depth===0){document.getElementById('t-form-err').style.display='block';return;}heibei=width*depth;}
+  else{heibei=getNum('heibei',0);if(heibei===0){document.getElementById('t-form-err').style.display='block';return;}width=Math.sqrt(heibei);depth=Math.sqrt(heibei);}
+  const noen_raw=(width/noenPitch)*depth,noenuke_raw=(depth/noenukePitch)*width;
+  function toHon(rawM,unitLen){return Math.ceil(rawM*(1+loss)/unitLen);}
+  const noen_hon=toHon(noen_raw,tLen),noenuke_hon=toHon(noenuke_raw,tLen);
+  const lines=[`【天井材 発注リスト】`,`天井面積: ${heibei.toFixed(2)}m²  野縁P: ${noenPitch}m  野縁受けP: ${noenukePitch}m`,`定尺: ${tLen}m  ロス: ${Math.round(loss*100)}%`,'─'.repeat(32),`野縁      ${noen_raw.toFixed(2)}m → ${noen_hon}本`,`野縁受け  ${noenuke_raw.toFixed(2)}m → ${noenuke_hon}本`,'─'.repeat(32),`合計: ${noen_hon+noenuke_hon}本`];
+  const orderText=lines.join('\n');window._tOrderText=orderText;
+  const html=`<div class="res-section"><div class="res-title">野縁</div><div class="metrics"><div class="metric"><div class="metric-label">必要m数</div><div class="metric-value">${noen_raw.toFixed(2)}<span class="metric-unit">m</span></div></div><div class="metric accent"><div class="metric-label">必要本数（ロス込）</div><div class="metric-value">${noen_hon}<span class="metric-unit">本</span></div></div></div></div><div class="res-section"><div class="res-title">野縁受け</div><div class="metrics"><div class="metric"><div class="metric-label">必要m数</div><div class="metric-value">${noenuke_raw.toFixed(2)}<span class="metric-unit">m</span></div></div><div class="metric accent"><div class="metric-label">必要本数（ロス込）</div><div class="metric-value">${noenuke_hon}<span class="metric-unit">本</span></div></div></div></div><div class="res-section"><div class="copy-row"><div class="res-title" style="margin:0">発注リスト</div><button class="copy-btn" onclick="copyTOrder()">コピー</button></div><div class="order-block"><div class="order-text">${orderText}</div></div></div><div class="res-section" style="text-align:center;padding:16px"><div class="metric-label" style="margin-bottom:4px">合計発注本数</div><div style="font-size:40px;font-weight:700;font-family:'DM Mono',monospace;color:var(--accent)">${noen_hon+noenuke_hon}<span style="font-size:16px;color:var(--text2);font-weight:400;margin-left:4px">本</span></div><div style="font-size:11px;color:var(--text3);margin-top:4px">定尺 ${tLen}m・ロス ${Math.round(loss*100)}% 込み</div></div>`;
+  const resEl=document.getElementById('t-results');resEl.innerHTML=html;resEl.style.display='block';resEl.scrollIntoView({behavior:'smooth',block:'start'});
 }
-
-function renumberKoshi() {
-  document.querySelectorAll('.koshi-item-title').forEach((el, i) => {
-    el.textContent = '腰壁 ' + (i + 1);
-  });
-}
-
-function getNum(id, fallback=0) {
-  const el = document.getElementById(id);
-  if (!el) return fallback;
-  const v = parseFloat(el.value);
-  return isNaN(v) ? fallback : v;
-}
-
-function ceil1(n) { return Math.ceil(n * 10) / 10; }
-function fmt(n) { return n.toFixed(2); }
-
-function calculate() {
-  document.getElementById('form-err').style.display = 'none';
-
-  const slab = getNum('slab', 2.7);
-  const pitch = getNum('pitch', 0.3);
-  const loss = getNum('loss', 5) / 100;
-
-  const g_m = getNum('gaiheki-m', 0);
-  const k_m = getNum('kaiheki-m', 0);
-  const k_iri = getNum('kaiheki-iri', 0);
-  const k_end = getNum('kaiheki-end', 0);
-
-  const koshiRows = document.querySelectorAll('.koshi-item');
-  const koshiList = [];
-  koshiRows.forEach((row, i) => {
-    const m = parseFloat(row.querySelector('.ki-m').value) || 0;
-    const h = parseFloat(row.querySelector('.ki-h').value) || 0;
-    const iri = parseFloat(row.querySelector('.ki-iri').value) || 0;
-    const end = parseFloat(row.querySelector('.ki-end').value) || 0;
-    if (m > 0 && h > 0) koshiList.push({m, h, iri, end, idx: i+1});
-  });
-
-  if (g_m === 0 && k_m === 0 && koshiList.length === 0) {
-    document.getElementById('form-err').style.display = 'block';
-    return;
-  }
-
-  const gaiheki_raw = (g_m / pitch) * slab + (g_m * 3);
-  const kaiheki_raw = ((k_m / pitch) + (k_iri * 2 + k_end)) * slab + (k_m * 3);
-
-  let koshi_total_raw = 0;
-  const koshiCalc = koshiList.map(k => {
-    const yokon = k.h >= 1.5 ? 3 : 2;
-    const raw = ((k.m / pitch) + (k.iri * 2 + k.end)) * k.h + (k.m * yokon);
-    koshi_total_raw += raw;
-    return {...k, yokon, raw};
-  });
-
-  const koshi_total_m = koshiList.reduce((a, k) => a + k.m, 0);
-  const sai_raw = g_m + (k_m * 2) + (koshi_total_m * 2);
-
-  function toHon(rawM, unitLen) {
-    return Math.ceil(rawM * (1 + loss) / unitLen);
-  }
-
-  const g_hon = toHon(gaiheki_raw, slab);
-  const k_hon = toHon(kaiheki_raw, slab);
-  const koshi_hons = koshiCalc.map(k => toHon(k.raw, slab));
-  const koshi_total_hon = koshi_hons.reduce((a, v) => a + v, 0);
-  const sai_hon = toHon(sai_raw, slab);
-  const total_hon = g_hon + k_hon + koshi_total_hon + sai_hon;
-
-  let orderLines = [];
-  orderLines.push(`【発注リスト】`);
-  orderLines.push(`S-S: ${slab}m  ピッチ: ${pitch}m  ロス: ${Math.round(loss*100)}%`);
-  orderLines.push(`${'─'.repeat(32)}`);
-  if (g_m > 0) orderLines.push(`外壁スタッド  ${fmt(gaiheki_raw)}m → ${g_hon}本`);
-  if (k_m > 0) orderLines.push(`界壁スタッド  ${fmt(kaiheki_raw)}m → ${k_hon}本`);
-  koshiCalc.forEach((k, i) => {
-    orderLines.push(`腰壁${k.idx}(H${k.h}m/${k.yokon}本横) ${fmt(k.raw)}m → ${koshi_hons[i]}本`);
-  });
-  if (koshiCalc.length > 1) {
-    orderLines.push(`腰壁 合計     ${fmt(koshi_total_raw)}m → ${koshi_total_hon}本`);
-  }
-  if (sai_raw > 0) orderLines.push(`際根太        ${fmt(sai_raw)}m → ${sai_hon}本`);
-  orderLines.push(`${'─'.repeat(32)}`);
-  orderLines.push(`合 計         ${total_hon}本`);
-  const orderText = orderLines.join('\n');
-  window._orderText = orderText;
-
-  function metricPair(label1, val1, unit1, label2, val2, unit2, accent=false) {
-    const cls = accent ? 'metric accent' : 'metric';
-    return `
-      <div class="${cls}">
-        <div class="metric-label">${label1}</div>
-        <div class="metric-value">${val1}<span class="metric-unit">${unit1}</span></div>
-      </div>
-      <div class="${cls}">
-        <div class="metric-label">${label2}</div>
-        <div class="metric-value">${val2}<span class="metric-unit">${unit2}</span></div>
-      </div>`;
-  }
-
-  function resCard(title, inner) {
-    return `<div class="res-section"><div class="res-title">${title}</div><div class="metrics">${inner}</div></div>`;
-  }
-
-  let html = '';
-
-  if (g_m > 0) {
-    html += resCard('外壁', metricPair('必要m数', fmt(gaiheki_raw), 'm', '必要本数（ロス込）', g_hon, '本', true));
-  }
-  if (k_m > 0) {
-    html += resCard('界壁', metricPair('必要m数', fmt(kaiheki_raw), 'm', '必要本数（ロス込）', k_hon, '本', true));
-  }
-  if (koshiCalc.length > 0) {
-    let kinner = '';
-    koshiCalc.forEach((k, i) => {
-      kinner += metricPair(
-        `腰壁${k.idx}｜H${k.h}m（横材${k.yokon}本）　m数`,
-        fmt(k.raw), 'm',
-        `腰壁${k.idx} 本数（ロス込）`,
-        koshi_hons[i], '本', true
-      );
-    });
-    if (koshiCalc.length > 1) {
-      kinner += metricPair('腰壁 合計m数', fmt(koshi_total_raw), 'm', '腰壁 合計本数', koshi_total_hon, '本');
-    }
-    html += resCard('腰壁', kinner);
-  }
-  if (sai_raw > 0) {
-    html += resCard('際根太', metricPair('必要m数', fmt(sai_raw), 'm', '必要本数（ロス込）', sai_hon, '本', true));
-  }
-
-  html += `
-  <div class="res-section">
-    <div class="copy-row">
-      <div class="res-title" style="margin:0">発注リスト</div>
-      <button class="copy-btn" onclick="copyOrder()">コピー</button>
-    </div>
-    <div class="order-block">
-      <div class="order-text" id="order-text">${orderText}</div>
-    </div>
-  </div>
-  <div class="res-section" style="text-align:center;padding:16px">
-    <div class="metric-label" style="margin-bottom:6px">合計発注本数</div>
-    <div style="font-size:40px;font-weight:700;font-family:'DM Mono',monospace;color:var(--accent)">${total_hon}<span style="font-size:16px;color:var(--text2);font-weight:400;margin-left:4px">本</span></div>
-  </div>`;
-
-  const resEl = document.getElementById('results');
-  resEl.innerHTML = html;
-  resEl.style.display = 'block';
-  resEl.scrollIntoView({behavior:'smooth', block:'start'});
-}
-
-function copyOrder() {
-  if (!window._orderText) return;
-  navigator.clipboard.writeText(window._orderText).then(() => {
-    const btn = document.querySelector('.copy-btn');
-    btn.textContent = 'コピー完了 ✓';
-    btn.style.background = '#27ae60';
-    setTimeout(() => { btn.textContent = 'コピー'; btn.style.background = ''; }, 2000);
-  });
-}
-
-function resetAll() {
-  if (!confirm('入力内容をすべてリセットしますか？')) return;
-  document.getElementById('gaiheki-m').value = '';
-  document.getElementById('kaiheki-m').value = '';
-  document.getElementById('kaiheki-iri').value = '0';
-  document.getElementById('kaiheki-end').value = '0';
-  document.getElementById('koshi-list').innerHTML = '';
-  koshiId = 0;
-  addKoshi();
-  document.getElementById('results').style.display = 'none';
-  document.getElementById('results').innerHTML = '';
-  window.scrollTo({top: 0, behavior: 'smooth'});
-}
-
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js').catch(() => {});
-}
-
+function copyTOrder(){if(!window._tOrderText)return;navigator.clipboard.writeText(window._tOrderText).then(()=>{const btns=document.querySelectorAll('#t-results .copy-btn');btns.forEach(btn=>{btn.textContent='コピー完了 ✓';btn.style.background='#27ae60';setTimeout(()=>{btn.textContent='コピー';btn.style.background='';},2000);});});}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{});}
 addKoshi();
 </script>
 </body>
