@@ -1,8 +1,9 @@
 {
   "name": "建材積算アプリ",
   "short_name": "建材積算",
-  "description": "外壁・界壁・腰壁・際根太の木材積算ツール",
-"start_url": "/sekisan-kenzai/"  "display": "standalone",
+  "description": "外壁・界壁・腰壁・際根太の建材積算ツール",
+  "start_url": "/",
+  "display": "standalone",
   "background_color": "#f5f4f0",
   "theme_color": "#2d5a3d",
   "orientation": "portrait-primary",
