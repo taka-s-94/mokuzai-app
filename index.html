@@ -14,20 +14,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #f5f4f0;
-  --surface: #ffffff;
-  --surface2: #f0ede8;
-  --border: #e0dcd5;
-  --border2: #ccc8c0;
-  --text: #1a1814;
-  --text2: #6b6660;
-  --text3: #9e9992;
-  --accent: #2d5a3d;
-  --accent-light: #e8f0eb;
-  --accent2: #8b4513;
+  --bg: #f5f4f0; --surface: #ffffff; --surface2: #f0ede8;
+  --border: #e0dcd5; --border2: #ccc8c0;
+  --text: #1a1814; --text2: #6b6660; --text3: #9e9992;
+  --accent: #2d5a3d; --accent-light: #e8f0eb;
+  --accent2: #8b4513; --accent2-light: #f5ede8;
   --danger: #c0392b;
-  --radius: 10px;
-  --radius-lg: 16px;
+  --radius: 10px; --radius-lg: 16px;
   --shadow: 0 1px 3px rgba(0,0,0,0.08);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -38,6 +31,7 @@ body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: va
 .section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 14px 16px; margin-bottom: 12px; box-shadow: var(--shadow); }
 .section-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
 .section-num { width: 22px; height: 22px; background: var(--accent); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
+.section-num.pb { background: var(--accent2); }
 .section-title { font-size: 13px; font-weight: 700; color: var(--text); }
 .field { margin-bottom: 10px; }
 .field:last-child { margin-bottom: 0; }
@@ -54,7 +48,9 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
 .calc-btn { width: 100%; padding: 15px; background: var(--accent); color: #fff; border: none; border-radius: var(--radius-lg); font-size: 16px; font-weight: 700; cursor: pointer; font-family: inherit; letter-spacing: 0.05em; margin-bottom: 20px; }
 .results { display: none; }
 .res-section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 14px 16px; margin-bottom: 12px; box-shadow: var(--shadow); }
+.res-section.pb { border-color: #d4b896; }
 .res-title { font-size: 12px; font-weight: 700; color: var(--text2); letter-spacing: 0.06em; margin-bottom: 10px; }
+.res-title.pb { color: var(--accent2); }
 .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .metric { background: var(--surface2); border-radius: var(--radius); padding: 10px 12px; }
 .metric-label { font-size: 11px; color: var(--text2); margin-bottom: 3px; }
@@ -62,10 +58,13 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
 .metric-unit { font-size: 12px; color: var(--text2); font-weight: 400; margin-left: 2px; font-family: 'Noto Sans JP', sans-serif; }
 .metric.accent { background: var(--accent-light); }
 .metric.accent .metric-value { color: var(--accent); }
+.metric.accent2 { background: var(--accent2-light); }
+.metric.accent2 .metric-value { color: var(--accent2); }
 .order-block { background: #1a1814; border-radius: var(--radius); padding: 14px; margin-top: 10px; overflow-x: auto; }
 .order-text { font-family: 'DM Mono', monospace; font-size: 12px; color: #c8c4be; line-height: 1.9; white-space: pre; }
 .copy-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
 .copy-btn { background: var(--accent); color: #fff; border: none; border-radius: 20px; padding: 6px 16px; font-size: 12px; cursor: pointer; font-family: inherit; font-weight: 500; }
+.copy-btn.pb { background: var(--accent2); }
 .err { color: var(--danger); font-size: 12px; margin-top: 8px; display: none; }
 .hint { font-size: 11px; color: var(--text3); margin-top: 4px; }
 .page-tabs { display: flex; gap: 6px; margin-bottom: 16px; }
@@ -82,6 +81,8 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
 .input-mode-toggle { display: flex; gap: 6px; margin-bottom: 12px; }
 .mode-btn { flex: 1; padding: 8px; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); font-size: 12px; font-weight: 700; color: var(--text2); cursor: pointer; font-family: inherit; text-align: center; }
 .mode-btn.active { background: var(--accent-light); border-color: var(--accent); color: var(--accent); }
+.divider { height: 1px; background: var(--border); margin: 12px 0; }
+.pb-badge { display: inline-block; background: var(--accent2-light); color: var(--accent2); font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; margin-left: 6px; }
 @media (max-width: 380px) { .grid3 { grid-template-columns: 1fr 1fr; } .metrics { grid-template-columns: 1fr; } }
 </style>
 </head>
@@ -96,10 +97,7 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
 
 <div id="help-modal" class="modal-overlay" onclick="if(event.target===this)closeHelp()">
   <div class="modal">
-    <div class="modal-title">
-      <span>天井材の見方</span>
-      <button class="modal-close" onclick="closeHelp()">×</button>
-    </div>
+    <div class="modal-title"><span>天井材の見方</span><button class="modal-close" onclick="closeHelp()">×</button></div>
     <svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;margin-bottom:14px">
       <rect width="320" height="220" fill="#f5f4f0" rx="8"/>
       <rect x="30" y="30" width="260" height="160" fill="#e8f0eb" stroke="#2d5a3d" stroke-width="1.5" rx="2"/>
@@ -129,6 +127,7 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
     <button class="page-tab" onclick="switchPage('tenjou')">天井積算</button>
   </div>
 
+  <!-- 壁材ページ -->
   <div id="page-kabe" class="page active">
     <div class="section">
       <div class="section-header"><div class="section-num">1</div><div class="section-title">基本設定</div></div>
@@ -137,32 +136,55 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
         <div class="field"><label>スタッド間隔 (m)</label><input type="number" id="pitch" value="0.3" min="0.1" max="1.0" step="0.05"></div>
       </div>
       <div class="grid2" style="margin-top:10px">
-        <div class="field"><label>ロス率 (%)</label><input type="number" id="loss" value="5" min="0" max="50" step="1"></div>
+        <div class="field"><label>木材ロス率 (%)</label><input type="number" id="loss" value="5" min="0" max="50" step="1"></div>
       </div>
     </div>
+
     <div class="section">
       <div class="section-header"><div class="section-num">2</div><div class="section-title">外壁</div></div>
-      <div class="field"><label>延長 (m)</label><input type="number" id="gaiheki-m" placeholder="例: 12.5" min="0" step="0.1"></div>
+      <div class="field"><label>壁の長さ (m)</label><input type="number" id="gaiheki-m" placeholder="例: 12.5" min="0" step="0.1"></div>
     </div>
+
     <div class="section">
       <div class="section-header"><div class="section-num">3</div><div class="section-title">界壁</div></div>
       <div class="grid3">
-        <div class="field"><label>延長 (m)</label><input type="number" id="kaiheki-m" placeholder="例: 8.0" min="0" step="0.1"></div>
+        <div class="field"><label>壁の長さ (m)</label><input type="number" id="kaiheki-m" placeholder="例: 8.0" min="0" step="0.1"></div>
         <div class="field"><label>入隅 (箇所)</label><input type="number" id="kaiheki-iri" value="0" min="0" step="1"></div>
         <div class="field"><label>エンド (箇所)</label><input type="number" id="kaiheki-end" value="0" min="0" step="1"></div>
       </div>
     </div>
+
     <div class="section">
       <div class="section-header"><div class="section-num">4</div><div class="section-title">腰壁</div></div>
       <div class="hint" style="margin-bottom:10px">高さ 1.5m 以上は横材 3本、未満は 2本で計算します</div>
       <div id="koshi-list"></div>
       <button class="add-btn" onclick="addKoshi()">＋ 腰壁を追加</button>
     </div>
+
+    <div class="section">
+      <div class="section-header"><div class="section-num pb">PB</div><div class="section-title">石膏ボード設定<span class="pb-badge">PB</span></div></div>
+      <div class="grid2">
+        <div class="field">
+          <label>PBサイズ</label>
+          <select id="pb-size">
+            <option value="1.6562">3×6（910×1820mm）</option>
+            <option value="2.2113">3×8（910×2430mm）</option>
+          </select>
+        </div>
+        <div class="field"><label>PBロス率 (%)</label><input type="number" id="pb-loss" value="10" min="0" max="50" step="1"></div>
+      </div>
+      <div class="grid2" style="margin-top:10px">
+        <div class="field"><label>天井高さ (m)　※PB計算用</label><input type="number" id="pb-height" placeholder="例: 2.4" min="0" step="0.05"></div>
+      </div>
+      <div class="hint" style="margin-top:6px">界壁は両面貼りで計算します</div>
+    </div>
+
     <div id="form-err" class="err">※ 外壁・界壁・腰壁のいずれか1つ以上を入力してください</div>
     <button class="calc-btn" onclick="calculate()">計 算 す る</button>
     <div class="results" id="results"></div>
   </div>
 
+  <!-- 天井ページ -->
   <div id="page-tenjou" class="page">
     <div class="section">
       <div class="section-header"><div class="section-num">1</div><div class="section-title">基本設定（天井）</div></div>
@@ -172,9 +194,10 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
       </div>
       <div class="grid2" style="margin-top:10px">
         <div class="field"><label>材料の長さ (m)</label><input type="number" id="t-length" value="2.7" min="0.5" step="0.1"></div>
-        <div class="field"><label>ロス率 (%)</label><input type="number" id="t-loss" value="5" min="0" max="50" step="1"></div>
+        <div class="field"><label>木材ロス率 (%)</label><input type="number" id="t-loss" value="5" min="0" max="50" step="1"></div>
       </div>
     </div>
+
     <div class="section">
       <div class="section-header"><div class="section-num">2</div><div class="section-title">部屋の入力</div><button class="help-btn" onclick="openHelp()">?</button></div>
       <div class="input-mode-toggle">
@@ -193,6 +216,21 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
       </div>
       <div id="t-form-err" class="err">※ 面積または縦横を入力してください</div>
     </div>
+
+    <div class="section">
+      <div class="section-header"><div class="section-num pb">PB</div><div class="section-title">石膏ボード設定<span class="pb-badge">PB</span></div></div>
+      <div class="grid2">
+        <div class="field">
+          <label>PBサイズ</label>
+          <select id="t-pb-size">
+            <option value="1.6562">3×6（910×1820mm）</option>
+            <option value="2.2113">3×8（910×2430mm）</option>
+          </select>
+        </div>
+        <div class="field"><label>PBロス率 (%)</label><input type="number" id="t-pb-loss" value="10" min="0" max="50" step="1"></div>
+      </div>
+    </div>
+
     <button class="calc-btn" onclick="calculateTenjou()">計 算 す る</button>
     <div class="results" id="t-results"></div>
   </div>
@@ -200,69 +238,250 @@ select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.o
 
 <script>
 let koshiId = 0;
-function addKoshi(m='',iri=0,end=0,h=''){koshiId++;const id=koshiId;const div=document.createElement('div');div.className='koshi-item';div.id='koshi-'+id;div.innerHTML=`<div class="koshi-item-title">腰壁 ${document.querySelectorAll('.koshi-item').length+1}</div><button class="del-btn" onclick="delKoshi(${id})">×</button><div class="grid2" style="margin-bottom:8px"><div class="field"><label>延長 (m)</label><input type="number" class="ki-m" placeholder="例: 5.0" min="0" step="0.1" value="${m}"></div><div class="field"><label>高さ (m)</label><input type="number" class="ki-h" placeholder="例: 1.2" min="0" step="0.05" value="${h}"></div></div><div class="grid2"><div class="field"><label>入隅 (箇所)</label><input type="number" class="ki-iri" min="0" step="1" value="${iri}"></div><div class="field"><label>エンド (箇所)</label><input type="number" class="ki-end" min="0" step="1" value="${end}"></div></div>`;document.getElementById('koshi-list').appendChild(div);renumberKoshi();}
+
+function addKoshi(m='',iri=0,end=0,h=''){
+  koshiId++;
+  const id=koshiId;
+  const div=document.createElement('div');
+  div.className='koshi-item';
+  div.id='koshi-'+id;
+  div.innerHTML=`<div class="koshi-item-title">腰壁 ${document.querySelectorAll('.koshi-item').length+1}</div><button class="del-btn" onclick="delKoshi(${id})">×</button><div class="grid2" style="margin-bottom:8px"><div class="field"><label>壁の長さ (m)</label><input type="number" class="ki-m" placeholder="例: 5.0" min="0" step="0.1" value="${m}"></div><div class="field"><label>高さ (m)</label><input type="number" class="ki-h" placeholder="例: 1.2" min="0" step="0.05" value="${h}"></div></div><div class="grid2"><div class="field"><label>入隅 (箇所)</label><input type="number" class="ki-iri" min="0" step="1" value="${iri}"></div><div class="field"><label>エンド (箇所)</label><input type="number" class="ki-end" min="0" step="1" value="${end}"></div></div>`;
+  document.getElementById('koshi-list').appendChild(div);
+  renumberKoshi();
+}
+
 function delKoshi(id){const el=document.getElementById('koshi-'+id);if(el)el.remove();renumberKoshi();}
 function renumberKoshi(){document.querySelectorAll('.koshi-item-title').forEach((el,i)=>{el.textContent='腰壁 '+(i+1);});}
 function getNum(id,fallback=0){const el=document.getElementById(id);if(!el)return fallback;const v=parseFloat(el.value);return isNaN(v)?fallback:v;}
 function fmt(n){return n.toFixed(2);}
+
 function calculate(){
   document.getElementById('form-err').style.display='none';
-  const slab=getNum('slab',2.7),pitch=getNum('pitch',0.3),loss=getNum('loss',5)/100;
-  const g_m=getNum('gaiheki-m',0),k_m=getNum('kaiheki-m',0),k_iri=getNum('kaiheki-iri',0),k_end=getNum('kaiheki-end',0);
+  const slab=getNum('slab',2.7);
+  const pitch=getNum('pitch',0.3);
+  const loss=getNum('loss',5)/100;
+  const pbSize=getNum('pb-size',1.6562);
+  const pbLoss=getNum('pb-loss',10)/100;
+  const pbH=getNum('pb-height',0);
+
+  const g_m=getNum('gaiheki-m',0);
+  const k_m=getNum('kaiheki-m',0);
+  const k_iri=getNum('kaiheki-iri',0);
+  const k_end=getNum('kaiheki-end',0);
+
   const koshiList=[];
-  document.querySelectorAll('.koshi-item').forEach((row,i)=>{const m=parseFloat(row.querySelector('.ki-m').value)||0,h=parseFloat(row.querySelector('.ki-h').value)||0,iri=parseFloat(row.querySelector('.ki-iri').value)||0,end=parseFloat(row.querySelector('.ki-end').value)||0;if(m>0&&h>0)koshiList.push({m,h,iri,end,idx:i+1});});
+  document.querySelectorAll('.koshi-item').forEach((row,i)=>{
+    const m=parseFloat(row.querySelector('.ki-m').value)||0;
+    const h=parseFloat(row.querySelector('.ki-h').value)||0;
+    const iri=parseFloat(row.querySelector('.ki-iri').value)||0;
+    const end=parseFloat(row.querySelector('.ki-end').value)||0;
+    if(m>0&&h>0)koshiList.push({m,h,iri,end,idx:i+1});
+  });
+
   if(g_m===0&&k_m===0&&koshiList.length===0){document.getElementById('form-err').style.display='block';return;}
+
   const gaiheki_raw=(g_m/pitch)*slab+(g_m*3);
   const kaiheki_raw=((k_m/pitch)+(k_iri*2+k_end))*slab+(k_m*3);
   let koshi_total_raw=0;
-  const koshiCalc=koshiList.map(k=>{const yokon=k.h>=1.5?3:2;const raw=((k.m/pitch)+(k.iri*2+k.end))*k.h+(k.m*yokon);koshi_total_raw+=raw;return{...k,yokon,raw};});
+  const koshiCalc=koshiList.map(k=>{
+    const yokon=k.h>=1.5?3:2;
+    const raw=((k.m/pitch)+(k.iri*2+k.end))*k.h+(k.m*yokon);
+    koshi_total_raw+=raw;
+    return{...k,yokon,raw};
+  });
   const koshi_total_m=koshiList.reduce((a,k)=>a+k.m,0);
   const sai_raw=g_m+(k_m*2)+(koshi_total_m*2);
+
   function toHon(rawM,unitLen){return Math.ceil(rawM*(1+loss)/unitLen);}
-  const g_hon=toHon(gaiheki_raw,slab),k_hon=toHon(kaiheki_raw,slab);
+
+  const g_hon=toHon(gaiheki_raw,slab);
+  const k_hon=toHon(kaiheki_raw,slab);
   const koshi_hons=koshiCalc.map(k=>toHon(k.raw,slab));
   const koshi_total_hon=koshi_hons.reduce((a,v)=>a+v,0);
-  const sai_hon=toHon(sai_raw,slab),total_hon=g_hon+k_hon+koshi_total_hon+sai_hon;
-  const lines=[`【発注リスト】`,`S-S: ${slab}m  ピッチ: ${pitch}m  ロス: ${Math.round(loss*100)}%`,'─'.repeat(32)];
+  const sai_hon=toHon(sai_raw,slab);
+  const total_hon=g_hon+k_hon+koshi_total_hon+sai_hon;
+
+  // PB計算
+  let pb_g_mai=0, pb_k_mai=0, pb_koshi_mai=0, pb_total_mai=0;
+  const hasPB = pbH > 0;
+  if(hasPB){
+    const pb_g_area = g_m * pbH;
+    const pb_k_area = k_m * pbH * 2;
+    const pb_koshi_area = koshiList.reduce((a,k)=>a+k.m*k.h, 0);
+    pb_g_mai = g_m>0 ? Math.ceil(pb_g_area*(1+pbLoss)/pbSize) : 0;
+    pb_k_mai = k_m>0 ? Math.ceil(pb_k_area*(1+pbLoss)/pbSize) : 0;
+    pb_koshi_mai = koshiList.length>0 ? Math.ceil(pb_koshi_area*(1+pbLoss)/pbSize) : 0;
+    pb_total_mai = pb_g_mai + pb_k_mai + pb_koshi_mai;
+  }
+
+  // 発注テキスト
+  const pbSizeLabel = pbSize > 2 ? '3×8' : '3×6';
+  const lines=[`【発注リスト】`,`S-S: ${slab}m  ピッチ: ${pitch}m  木材ロス: ${Math.round(loss*100)}%`,'─'.repeat(32)];
   if(g_m>0)lines.push(`外壁スタッド  ${fmt(gaiheki_raw)}m → ${g_hon}本`);
   if(k_m>0)lines.push(`界壁スタッド  ${fmt(kaiheki_raw)}m → ${k_hon}本`);
   koshiCalc.forEach((k,i)=>lines.push(`腰壁${k.idx}(H${k.h}m/${k.yokon}本横) ${fmt(k.raw)}m → ${koshi_hons[i]}本`));
   if(koshiCalc.length>1)lines.push(`腰壁 合計     ${fmt(koshi_total_raw)}m → ${koshi_total_hon}本`);
   if(sai_raw>0)lines.push(`際根太        ${fmt(sai_raw)}m → ${sai_hon}本`);
-  lines.push('─'.repeat(32),`合 計         ${total_hon}本`);
-  const orderText=lines.join('\n');window._orderText=orderText;
-  function mp(l1,v1,u1,l2,v2,u2,ac=false){const c=ac?'metric accent':'metric';return`<div class="${c}"><div class="metric-label">${l1}</div><div class="metric-value">${v1}<span class="metric-unit">${u1}</span></div></div><div class="${c}"><div class="metric-label">${l2}</div><div class="metric-value">${v2}<span class="metric-unit">${u2}</span></div></div>`;}
+  lines.push('─'.repeat(32),`木材合計      ${total_hon}本`);
+  if(hasPB){
+    lines.push('','【PB発注リスト】');
+    lines.push(`サイズ: ${pbSizeLabel}  PBロス: ${Math.round(pbLoss*100)}%  天井高: ${pbH}m`);
+    lines.push('─'.repeat(32));
+    if(g_m>0)lines.push(`外壁PB        ${pb_g_mai}枚`);
+    if(k_m>0)lines.push(`界壁PB(両面)  ${pb_k_mai}枚`);
+    if(koshiList.length>0)lines.push(`腰壁PB       ${pb_koshi_mai}枚`);
+    lines.push('─'.repeat(32),`PB合計        ${pb_total_mai}枚`);
+  }
+  const orderText=lines.join('\n');
+  window._orderText=orderText;
+
+  function mp(l1,v1,u1,l2,v2,u2,ac=false){
+    const c=ac?'metric accent':'metric';
+    return`<div class="${c}"><div class="metric-label">${l1}</div><div class="metric-value">${v1}<span class="metric-unit">${u1}</span></div></div><div class="${c}"><div class="metric-label">${l2}</div><div class="metric-value">${v2}<span class="metric-unit">${u2}</span></div></div>`;
+  }
   function rc(t,inner){return`<div class="res-section"><div class="res-title">${t}</div><div class="metrics">${inner}</div></div>`;}
+  function mp2(l1,v1,u1,l2,v2,u2){
+    return`<div class="metric accent2"><div class="metric-label">${l1}</div><div class="metric-value">${v1}<span class="metric-unit">${u1}</span></div></div><div class="metric accent2"><div class="metric-label">${l2}</div><div class="metric-value">${v2}<span class="metric-unit">${u2}</span></div></div>`;
+  }
+
   let html='';
   if(g_m>0)html+=rc('外壁',mp('必要m数',fmt(gaiheki_raw),'m','必要本数（ロス込）',g_hon,'本',true));
   if(k_m>0)html+=rc('界壁',mp('必要m数',fmt(kaiheki_raw),'m','必要本数（ロス込）',k_hon,'本',true));
-  if(koshiCalc.length>0){let ki='';koshiCalc.forEach((k,i)=>{ki+=mp(`腰壁${k.idx}｜H${k.h}m（横材${k.yokon}本）m数`,fmt(k.raw),'m',`腰壁${k.idx} 本数（ロス込）`,koshi_hons[i],'本',true);});if(koshiCalc.length>1)ki+=mp('腰壁 合計m数',fmt(koshi_total_raw),'m','腰壁 合計本数',koshi_total_hon,'本');html+=rc('腰壁',ki);}
+  if(koshiCalc.length>0){
+    let ki='';
+    koshiCalc.forEach((k,i)=>{ki+=mp(`腰壁${k.idx}｜H${k.h}m（横材${k.yokon}本）m数`,fmt(k.raw),'m',`腰壁${k.idx} 本数（ロス込）`,koshi_hons[i],'本',true);});
+    if(koshiCalc.length>1)ki+=mp('腰壁 合計m数',fmt(koshi_total_raw),'m','腰壁 合計本数',koshi_total_hon,'本');
+    html+=rc('腰壁',ki);
+  }
   if(sai_raw>0)html+=rc('際根太',mp('必要m数',fmt(sai_raw),'m','必要本数（ロス込）',sai_hon,'本',true));
-  html+=`<div class="res-section"><div class="copy-row"><div class="res-title" style="margin:0">発注リスト</div><button class="copy-btn" onclick="copyOrder()">コピー</button></div><div class="order-block"><div class="order-text">${orderText}</div></div></div><div class="res-section" style="text-align:center;padding:16px"><div class="metric-label" style="margin-bottom:6px">合計発注本数</div><div style="font-size:40px;font-weight:700;font-family:'DM Mono',monospace;color:var(--accent)">${total_hon}<span style="font-size:16px;color:var(--text2);font-weight:400;margin-left:4px">本</span></div></div>`;
-  const resEl=document.getElementById('results');resEl.innerHTML=html;resEl.style.display='block';resEl.scrollIntoView({behavior:'smooth',block:'start'});
+
+  html+=`<div class="res-section" style="text-align:center;padding:16px"><div class="metric-label" style="margin-bottom:6px">木材 合計発注本数</div><div style="font-size:40px;font-weight:700;font-family:'DM Mono',monospace;color:var(--accent)">${total_hon}<span style="font-size:16px;color:var(--text2);font-weight:400;margin-left:4px">本</span></div></div>`;
+
+  if(hasPB){
+    html+=`<div class="res-section pb"><div class="res-title pb">石膏ボード（${pbSizeLabel}・ロス${Math.round(pbLoss*100)}%・天井高${pbH}m）</div><div class="metrics">`;
+    if(g_m>0)html+=`<div class="metric accent2"><div class="metric-label">外壁</div><div class="metric-value">${pb_g_mai}<span class="metric-unit">枚</span></div></div>`;
+    if(k_m>0)html+=`<div class="metric accent2"><div class="metric-label">界壁（両面）</div><div class="metric-value">${pb_k_mai}<span class="metric-unit">枚</span></div></div>`;
+    if(koshiList.length>0)html+=`<div class="metric accent2"><div class="metric-label">腰壁</div><div class="metric-value">${pb_koshi_mai}<span class="metric-unit">枚</span></div></div>`;
+    html+=`<div class="metric accent2"><div class="metric-label">PB 合計</div><div class="metric-value">${pb_total_mai}<span class="metric-unit">枚</span></div></div></div></div>`;
+    html+=`<div class="res-section" style="text-align:center;padding:16px"><div class="metric-label" style="margin-bottom:6px">PB 合計発注枚数</div><div style="font-size:40px;font-weight:700;font-family:'DM Mono',monospace;color:var(--accent2)">${pb_total_mai}<span style="font-size:16px;color:var(--text2);font-weight:400;margin-left:4px">枚</span></div></div>`;
+  }
+
+  html+=`<div class="res-section"><div class="copy-row"><div class="res-title" style="margin:0">発注リスト</div><button class="copy-btn" onclick="copyOrder()">コピー</button></div><div class="order-block"><div class="order-text">${orderText}</div></div></div>`;
+
+  const resEl=document.getElementById('results');
+  resEl.innerHTML=html;resEl.style.display='block';
+  resEl.scrollIntoView({behavior:'smooth',block:'start'});
 }
-function copyOrder(){if(!window._orderText)return;navigator.clipboard.writeText(window._orderText).then(()=>{const btn=document.querySelector('#results .copy-btn');btn.textContent='コピー完了 ✓';btn.style.background='#27ae60';setTimeout(()=>{btn.textContent='コピー';btn.style.background='';},2000);});}
-function resetAll(){if(!confirm('入力内容をすべてリセットしますか？'))return;document.getElementById('gaiheki-m').value='';document.getElementById('kaiheki-m').value='';document.getElementById('kaiheki-iri').value='0';document.getElementById('kaiheki-end').value='0';document.getElementById('koshi-list').innerHTML='';koshiId=0;addKoshi();document.getElementById('results').style.display='none';document.getElementById('results').innerHTML='';window.scrollTo({top:0,behavior:'smooth'});}
-function switchPage(page){document.querySelectorAll('.page-tab').forEach((t,i)=>{t.classList.toggle('active',(i===0&&page==='kabe')||(i===1&&page==='tenjou'));});document.getElementById('page-kabe').classList.toggle('active',page==='kabe');document.getElementById('page-tenjou').classList.toggle('active',page==='tenjou');}
-function switchMode(mode){document.getElementById('mode-heibei').classList.toggle('active',mode==='heibei');document.getElementById('mode-tateyoko').classList.toggle('active',mode==='tateyoko');document.getElementById('mode-heibei-form').style.display=mode==='heibei'?'block':'none';document.getElementById('mode-tateyoko-form').style.display=mode==='tateyoko'?'block':'none';}
+
+function copyOrder(){
+  if(!window._orderText)return;
+  navigator.clipboard.writeText(window._orderText).then(()=>{
+    const btn=document.querySelector('#results .copy-btn');
+    btn.textContent='コピー完了 ✓';btn.style.background='#27ae60';
+    setTimeout(()=>{btn.textContent='コピー';btn.style.background='';},2000);
+  });
+}
+
+function resetAll(){
+  if(!confirm('入力内容をすべてリセットしますか？'))return;
+  ['gaiheki-m','kaiheki-m','pb-height'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  ['kaiheki-iri','kaiheki-end'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='0';});
+  document.getElementById('koshi-list').innerHTML='';
+  koshiId=0;addKoshi();
+  document.getElementById('results').style.display='none';
+  document.getElementById('results').innerHTML='';
+  document.getElementById('t-results').style.display='none';
+  document.getElementById('t-results').innerHTML='';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function switchPage(page){
+  document.querySelectorAll('.page-tab').forEach((t,i)=>{t.classList.toggle('active',(i===0&&page==='kabe')||(i===1&&page==='tenjou'));});
+  document.getElementById('page-kabe').classList.toggle('active',page==='kabe');
+  document.getElementById('page-tenjou').classList.toggle('active',page==='tenjou');
+}
+
+function switchMode(mode){
+  document.getElementById('mode-heibei').classList.toggle('active',mode==='heibei');
+  document.getElementById('mode-tateyoko').classList.toggle('active',mode==='tateyoko');
+  document.getElementById('mode-heibei-form').style.display=mode==='heibei'?'block':'none';
+  document.getElementById('mode-tateyoko-form').style.display=mode==='tateyoko'?'block':'none';
+}
+
 function openHelp(){document.getElementById('help-modal').classList.add('open');}
 function closeHelp(){document.getElementById('help-modal').classList.remove('open');}
+
 function calculateTenjou(){
   document.getElementById('t-form-err').style.display='none';
-  const noenPitch=getNum('noen-pitch',0.303),noenukePitch=getNum('noenuke-pitch',0.9),loss=getNum('t-loss',5)/100,tLen=getNum('t-length',2.7);
+  const noenPitch=getNum('noen-pitch',0.303);
+  const noenukePitch=getNum('noenuke-pitch',0.9);
+  const loss=getNum('t-loss',5)/100;
+  const tLen=getNum('t-length',2.7);
+  const pbSize=getNum('t-pb-size',1.6562);
+  const pbLoss=getNum('t-pb-loss',10)/100;
+
   const isTateYoko=document.getElementById('mode-tateyoko').classList.contains('active');
   let width,depth,heibei;
-  if(isTateYoko){width=getNum('heya-w',0);depth=getNum('heya-d',0);if(width===0||depth===0){document.getElementById('t-form-err').style.display='block';return;}heibei=width*depth;}
-  else{heibei=getNum('heibei',0);if(heibei===0){document.getElementById('t-form-err').style.display='block';return;}width=Math.sqrt(heibei);depth=Math.sqrt(heibei);}
-  const noen_raw=(width/noenPitch)*depth,noenuke_raw=(depth/noenukePitch)*width;
+  if(isTateYoko){
+    width=getNum('heya-w',0);depth=getNum('heya-d',0);
+    if(width===0||depth===0){document.getElementById('t-form-err').style.display='block';return;}
+    heibei=width*depth;
+  } else {
+    heibei=getNum('heibei',0);
+    if(heibei===0){document.getElementById('t-form-err').style.display='block';return;}
+    width=Math.sqrt(heibei);depth=Math.sqrt(heibei);
+  }
+
+  const noen_raw=(width/noenPitch)*depth;
+  const noenuke_raw=(depth/noenukePitch)*width;
   function toHon(rawM,unitLen){return Math.ceil(rawM*(1+loss)/unitLen);}
-  const noen_hon=toHon(noen_raw,tLen),noenuke_hon=toHon(noenuke_raw,tLen);
-  const lines=[`【天井材 発注リスト】`,`天井面積: ${heibei.toFixed(2)}m²  野縁P: ${noenPitch}m  野縁受けP: ${noenukePitch}m`,`定尺: ${tLen}m  ロス: ${Math.round(loss*100)}%`,'─'.repeat(32),`野縁      ${noen_raw.toFixed(2)}m → ${noen_hon}本`,`野縁受け  ${noenuke_raw.toFixed(2)}m → ${noenuke_hon}本`,'─'.repeat(32),`合計: ${noen_hon+noenuke_hon}本`];
-  const orderText=lines.join('\n');window._tOrderText=orderText;
-  const html=`<div class="res-section"><div class="res-title">野縁</div><div class="metrics"><div class="metric"><div class="metric-label">必要m数</div><div class="metric-value">${noen_raw.toFixed(2)}<span class="metric-unit">m</span></div></div><div class="metric accent"><div class="metric-label">必要本数（ロス込）</div><div class="metric-value">${noen_hon}<span class="metric-unit">本</span></div></div></div></div><div class="res-section"><div class="res-title">野縁受け</div><div class="metrics"><div class="metric"><div class="metric-label">必要m数</div><div class="metric-value">${noenuke_raw.toFixed(2)}<span class="metric-unit">m</span></div></div><div class="metric accent"><div class="metric-label">必要本数（ロス込）</div><div class="metric-value">${noenuke_hon}<span class="metric-unit">本</span></div></div></div></div><div class="res-section"><div class="copy-row"><div class="res-title" style="margin:0">発注リスト</div><button class="copy-btn" onclick="copyTOrder()">コピー</button></div><div class="order-block"><div class="order-text">${orderText}</div></div></div><div class="res-section" style="text-align:center;padding:16px"><div class="metric-label" style="margin-bottom:4px">合計発注本数</div><div style="font-size:40px;font-weight:700;font-family:'DM Mono',monospace;color:var(--accent)">${noen_hon+noenuke_hon}<span style="font-size:16px;color:var(--text2);font-weight:400;margin-left:4px">本</span></div><div style="font-size:11px;color:var(--text3);margin-top:4px">定尺 ${tLen}m・ロス ${Math.round(loss*100)}% 込み</div></div>`;
-  const resEl=document.getElementById('t-results');resEl.innerHTML=html;resEl.style.display='block';resEl.scrollIntoView({behavior:'smooth',block:'start'});
+  const noen_hon=toHon(noen_raw,tLen);
+  const noenuke_hon=toHon(noenuke_raw,tLen);
+
+  const pb_mai=Math.ceil(heibei*(1+pbLoss)/pbSize);
+  const pbSizeLabel=pbSize>2?'3×8':'3×6';
+
+  const lines=[`【天井材 発注リスト】`,`天井面積: ${heibei.toFixed(2)}m²  野縁P: ${noenPitch}m  野縁受けP: ${noenukePitch}m`,`定尺: ${tLen}m  木材ロス: ${Math.round(loss*100)}%`,'─'.repeat(32),`野縁      ${noen_raw.toFixed(2)}m → ${noen_hon}本`,`野縁受け  ${noenuke_raw.toFixed(2)}m → ${noenuke_hon}本`,'─'.repeat(32),`木材合計  ${noen_hon+noenuke_hon}本`,``,`【天井PB】`,`サイズ: ${pbSizeLabel}  PBロス: ${Math.round(pbLoss*100)}%`,'─'.repeat(32),`天井PB    ${pb_mai}枚`];
+  const orderText=lines.join('\n');
+  window._tOrderText=orderText;
+
+  const html=`
+  <div class="res-section"><div class="res-title">野縁</div><div class="metrics">
+    <div class="metric"><div class="metric-label">必要m数</div><div class="metric-value">${noen_raw.toFixed(2)}<span class="metric-unit">m</span></div></div>
+    <div class="metric accent"><div class="metric-label">必要本数（ロス込）</div><div class="metric-value">${noen_hon}<span class="metric-unit">本</span></div></div>
+  </div></div>
+  <div class="res-section"><div class="res-title">野縁受け</div><div class="metrics">
+    <div class="metric"><div class="metric-label">必要m数</div><div class="metric-value">${noenuke_raw.toFixed(2)}<span class="metric-unit">m</span></div></div>
+    <div class="metric accent"><div class="metric-label">必要本数（ロス込）</div><div class="metric-value">${noenuke_hon}<span class="metric-unit">本</span></div></div>
+  </div></div>
+  <div class="res-section" style="text-align:center;padding:16px">
+    <div class="metric-label" style="margin-bottom:6px">木材 合計発注本数</div>
+    <div style="font-size:40px;font-weight:700;font-family:'DM Mono',monospace;color:var(--accent)">${noen_hon+noenuke_hon}<span style="font-size:16px;color:var(--text2);font-weight:400;margin-left:4px">本</span></div>
+    <div style="font-size:11px;color:var(--text3);margin-top:4px">定尺 ${tLen}m・ロス ${Math.round(loss*100)}% 込み</div>
+  </div>
+  <div class="res-section pb"><div class="res-title pb">石膏ボード（${pbSizeLabel}・ロス${Math.round(pbLoss*100)}%）</div><div class="metrics">
+    <div class="metric"><div class="metric-label">天井面積</div><div class="metric-value">${heibei.toFixed(2)}<span class="metric-unit">m²</span></div></div>
+    <div class="metric accent2"><div class="metric-label">必要枚数（ロス込）</div><div class="metric-value">${pb_mai}<span class="metric-unit">枚</span></div></div>
+  </div></div>
+  <div class="res-section" style="text-align:center;padding:16px">
+    <div class="metric-label" style="margin-bottom:6px">PB 合計発注枚数</div>
+    <div style="font-size:40px;font-weight:700;font-family:'DM Mono',monospace;color:var(--accent2)">${pb_mai}<span style="font-size:16px;color:var(--text2);font-weight:400;margin-left:4px">枚</span></div>
+  </div>
+  <div class="res-section"><div class="copy-row"><div class="res-title" style="margin:0">発注リスト</div><button class="copy-btn" onclick="copyTOrder()">コピー</button></div><div class="order-block"><div class="order-text">${orderText}</div></div></div>`;
+
+  const resEl=document.getElementById('t-results');
+  resEl.innerHTML=html;resEl.style.display='block';
+  resEl.scrollIntoView({behavior:'smooth',block:'start'});
 }
-function copyTOrder(){if(!window._tOrderText)return;navigator.clipboard.writeText(window._tOrderText).then(()=>{const btns=document.querySelectorAll('#t-results .copy-btn');btns.forEach(btn=>{btn.textContent='コピー完了 ✓';btn.style.background='#27ae60';setTimeout(()=>{btn.textContent='コピー';btn.style.background='';},2000);});});}
+
+function copyTOrder(){
+  if(!window._tOrderText)return;
+  navigator.clipboard.writeText(window._tOrderText).then(()=>{
+    const btns=document.querySelectorAll('#t-results .copy-btn');
+    btns.forEach(btn=>{btn.textContent='コピー完了 ✓';btn.style.background='#27ae60';setTimeout(()=>{btn.textContent='コピー';btn.style.background='';},2000);});
+  });
+}
+
 if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{});}
 addKoshi();
 </script>
